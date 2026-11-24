@@ -49,7 +49,8 @@ type Host interface {
 	// Handle serves a route the manifest declares. Registering a route the
 	// manifest does not declare, or with another access, fails the start.
 	Handle(method, path string, h Handler)
-	// Every runs a job the manifest declares, at its declared interval.
+	// Every runs a job the manifest declares: once right after the plugin
+	// starts, then at its declared interval.
 	Every(name string, fn JobFunc)
 	// Logger writes to the platform's log, tagged with the plugin's id.
 	Logger() *slog.Logger
